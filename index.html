@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>咨询三部知识库</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
-        h1 { color: #007bff; }
-        a { display: block; margin: 20px; font-size: 18px; text-decoration: none; color: #333; }
-        a:hover { color: #007bff; }
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .hidden { display: none; }
+        .expandable { cursor: pointer; color: blue; text-decoration: underline; margin: 10px; }
+        .content { display: none; margin-left: 20px; }
+        .login-box { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border: 1px solid #ccc; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
@@ -21,24 +22,81 @@
     </div>
 
     <div id="main-content" class="hidden">
-    <h1>咨询三部知识库</h1>
-    <p>提供金融咨询，发布多种便利工具和自研程序，助力工作迅速展开</p>
-    <a href="news.html">👉 前沿资讯</a>
-    <a href="tools.html">👉 便利工具</a>
-    <a href="programs.html">👉 自研程序</a>
+        <h1>咨询三部知识库</h1>
+        <h3>提供金融咨询，发布多种便利工具和自研程序，助力工作迅速展开</h3>
+
+        <div>
+            <p class="expandable" onclick="toggleVisibility('news')">👉前沿资讯</p>
+            <div id="news" class="content">
+                <p class="expandable" onclick="openLink('https://example.com/a')">A</p>
+                <p class="expandable" onclick="openLink('https://example.com/b')">B</p>
+                <p class="expandable" onclick="openLink('https://example.com/c')">C</p>
+            </div>
+        </div>
+
+        <div>
+            <p class="expandable" onclick="toggleVisibility('tools')">👉便利工具</p>
+            <div id="tools" class="content">
+                <p class="expandable" onclick="toggleVisibility('online-tools')">在线工具</p>
+                <div id="online-tools" class="content">
+                    <p class="expandable" onclick="openLink('https://example.com/online-a')">A</p>
+                    <p class="expandable" onclick="openLink('https://example.com/online-b')">B</p>
+                    <p class="expandable" onclick="openLink('https://example.com/online-c')">C</p>
+                </div>
+                <p class="expandable" onclick="toggleVisibility('downloads')">软件下载</p>
+                <div id="downloads" class="content">
+                    <p class="expandable" onclick="downloadFile('software-d.exe')">D</p>
+                    <p class="expandable" onclick="downloadFile('software-e.exe')">E</p>
+                    <p class="expandable" onclick="downloadFile('software-f.exe')">F</p>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <p class="expandable" onclick="openEmbeddedExcel('https://example.com/excel.xlsx')">👉项目沉淀</p>
+            <a href="news.html">👉 前沿资讯</a>
+            <a href="tools.html">👉 便利工具</a>
+            <a href="programs.html">👉 自研程序</a>
+        </div>
     </div>
-    
+
     <script>
-    function checkLogin() {
+        function checkLogin() {
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
-            if (username === "admin" && password === "111111") {
+            if (username === "admin" && password === "1234") {
                 document.getElementById("login").style.display = "none";
                 document.getElementById("main-content").classList.remove("hidden");
             } else {
                 document.getElementById("error").textContent = "用户名或密码错误";
             }
         }
-    <script>
+
+        function toggleVisibility(id) {
+            var element = document.getElementById(id);
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+            } else {
+                element.style.display = "none";
+            }
+        }
+
+        function openLink(url) {
+            window.open(url, "_blank");
+        }
+
+        function downloadFile(filename) {
+            var a = document.createElement("a");
+            a.href = filename;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        function openEmbeddedExcel(url) {
+            window.open("https://view.officeapps.live.com/op/embed.aspx?src=" + encodeURIComponent(url), "_blank");
+        }
+    </script>
 </body>
 </html>
