@@ -12,10 +12,33 @@
     </style>
 </head>
 <body>
+    <div id="login" class="login-box">
+        <h2>登录</h2>
+        <input type="text" id="username" placeholder="用户名"><br><br>
+        <input type="password" id="password" placeholder="密码"><br><br>
+        <button onclick="checkLogin()">登录</button>
+        <p id="error" style="color:red;"></p>
+    </div>
+
+    <div id="main-content" class="hidden">
     <h1>咨询三部知识库</h1>
     <p>提供金融咨询，发布多种便利工具和自研程序，助力工作迅速展开</p>
     <a href="news.html">👉 前沿资讯</a>
     <a href="tools.html">👉 便利工具</a>
     <a href="programs.html">👉 自研程序</a>
+    </div>
+    
+    <script>
+    function checkLogin() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            if (username === "admin" && password === "111111") {
+                document.getElementById("login").style.display = "none";
+                document.getElementById("main-content").classList.remove("hidden");
+            } else {
+                document.getElementById("error").textContent = "用户名或密码错误";
+            }
+        }
+    <script>
 </body>
 </html>
