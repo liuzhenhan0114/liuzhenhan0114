@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>便利工具</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        h1 { color: #007bff; }
+        a { display: block; margin: 20px; font-size: 18px; text-decoration: none; color: #333; }
+        a:hover { color: #007bff; }
+    </style>
+</head>
+<body>
+    <h1>便利工具</h1>
+    <p>提供多种办公软件，点击即可下载</p>
+    <a href="https://github.com/liuzhenhan0114/liuzhenhan0114/releases/download/everything/Everything-1.4.1.1024.x64.zip">搜索工具：everything</a>
+    <a href="tools.html">便捷记事本：kite</a>
+    <a href="programs.html">比对工具：Beyond Compare</a>
+</body>
+</html>
