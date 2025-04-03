@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>展开文字示例</title>
+    <style>
+        .hidden {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .visible {
+            max-height: 200px; /* 适当调整高度，确保能容纳内容 */
+            transition: max-height 0.5s ease-in;
+        }
+        .expandable {
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <p class="expandable" onclick="toggleText()">点击这里展开更多内容</p>
+    <div id="extraText" class="hidden">
+        <p>第一行内容</p>
+        <p>第二行内容</p>
+        <p>第三行内容</p>
+    </div>
+
+    <script>
+        function toggleText() {
+            var extraText = document.getElementById("extraText");
+            if (extraText.classList.contains("hidden")) {
+                extraText.classList.remove("hidden");
+                extraText.classList.add("visible");
+            } else {
+                extraText.classList.remove("visible");
+                extraText.classList.add("hidden");
+            }
+        }
+    </script>
+</body>
+</html>
